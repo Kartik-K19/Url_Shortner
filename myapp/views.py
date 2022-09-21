@@ -14,7 +14,7 @@ def home_page(request):
 	}
 
 	if request.method == 'POST':
-		data = request.POST 				# dict
+		data = request.POST 		# dict
 		long_url = data['longurl']
 		custom_name = data['custom_name']
 
@@ -72,6 +72,19 @@ def all_analytics(request):
 
 	context = {
 		"rows": rows
-	}
+		}
+	context["short_url"] = request.build_absolute_uri("/")
+
 
 	return render(request, "all-analytics.html", context)
+
+def analytics(request, short_url):
+	rows = LongToShort.objects.filter(short_url = short_url)
+	obj = rows[0]
+	long_url = obj.long_url
+	context = {
+		"rows": rows
+		}
+	return render(request, "analytics.html", context)
+
+

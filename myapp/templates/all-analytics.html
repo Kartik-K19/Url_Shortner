@@ -9,7 +9,7 @@
 	<title>Custom URL Shortener</title>
 
 	<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css" media="screen">
-	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"  media="screen">
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="screen">
 </head>
 
 <body class="pace-done lout_stats30">
@@ -20,20 +20,17 @@
 					<h2 class="h1" style="text-align: center;">All Links Analytics</h2>
 				</div>
 				{% for obj in rows %}
-
 				<div class="url_options url_stats_o" id="1">
-					<p class="data_link">{{ obj.date }}</p>
+					<p class="data_link">{{obj.date}}</p>
 					<p class="url_link">
-						{{ obj.long_url }}
+						{{obj.long_url}}
 					</p>
 					<p id="link" class="link_element">
-						<a href="{{ obj.short_url }} "class="short_url_l" target="blank">
-							{{ obj.short_url }}</a>
+						<a href="/analytics/{{obj.short_url}}" class="short_url_l" target="blank">{{short_url}}{{obj.short_url}}</a>
 					</p>
 					<div class="stats_total btn-cutt click_stats btn_norm">
-						<div>Total clicks <strong class="allClicks">{{ obj.clicks }}</strong></div>
+						<div>Total clicks <strong class="allClicks">{{obj.clicks}}</strong></div>
 					</div>
-					
 				</div>
 				{% endfor %}
 

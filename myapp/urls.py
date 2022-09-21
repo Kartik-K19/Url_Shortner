@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.home_page),
     path('test', views.test),
     path('all-analytics', views.all_analytics),
-
-    path('<slug:short_url>', views.redirect_url)
+    path('<slug:short_url>', views.redirect_url),
+    path('analytics/<slug:short_url>/', views.analytics)
 ]
 
